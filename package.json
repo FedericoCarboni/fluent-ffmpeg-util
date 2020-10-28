@@ -26,6 +26,9 @@
     "url": "https://github.com/FedericoCarboni/fluent-ffmpeg-util/issues"
   },
   "homepage": "https://github.com/FedericoCarboni/fluent-ffmpeg-util#readme",
+  "files": [
+    "/lib"
+  ],
   "dependencies": {
     "uuid": "^8.3.1"
   },
