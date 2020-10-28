@@ -1,7 +1,7 @@
 {
   "name": "fluent-ffmpeg-util",
   "version": "0.1.0-alpha.0",
-  "description": "",
+  "description": "Extra fluent-ffmpeg features",
   "main": "dist/lib.cjs",
   "exports": {
     "node": {
@@ -12,6 +12,7 @@
   "scripts": {
     "build": "rollup -c",
     "lint": "eslint src/**",
+    "prepack": "npm run lint && npm run build",
     "test": "mocha"
   },
   "repository": {
