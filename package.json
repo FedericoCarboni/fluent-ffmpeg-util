@@ -11,6 +11,7 @@
   },
   "scripts": {
     "build": "rollup -c",
+    "lint": "eslint src/**",
     "test": "mocha"
   },
   "repository": {
