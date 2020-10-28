@@ -1,0 +1,20 @@
+{
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:es/no-2015"
+  ],
+  "plugins": ["es"],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "rules": {
+    "es/no-typed-arrays": "off",
+    "es/no-modules": "off"
+  },
+  "ignorePatterns": ["rollup.config.js"]
+}
