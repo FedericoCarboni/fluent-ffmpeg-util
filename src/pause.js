@@ -7,13 +7,17 @@ if (isWin32)
         try {
             var ntsuspend = require('ntsuspend');
             pause = function (command) {
-                if (!command.ffmpegProc)
+                if (!command.ffmpegProc) {
+                    command.logger.warn('[util] Cannot pause ffmpeg, no process found');
                     return false;
+                }
                 return ntsuspend.suspend(command.ffmpegProc.pid);
             };
             resume = function (command) {
-                if (!command.ffmpegProc)
+                if (!command.ffmpegProc) {
+                    command.logger.warn('[util] Cannot resume ffmpeg, no process found');
                     return false;
+                }
                 return ntsuspend.resume(command.ffmpegProc.pid);
             };
         } catch (_e) {
@@ -23,13 +27,17 @@ if (isWin32)
     }());
 else {
     pause = function (command) {
-        if (!command.ffmpegProc)
+        if (!command.ffmpegProc) {
+            command.logger.warn('[util] Cannot pause ffmpeg, no process found');
             return false;
+        }
         return command.ffmpegProc.kill('SIGSTOP');
     };
     resume = function (command) {
-        if (!command.ffmpegProc)
+        if (!command.ffmpegProc) {
+            command.logger.warn('[util] Cannot resume ffmpeg, no process found');
             return false;
+        }
         return command.ffmpegProc.kill('SIGCONT');
     };
 }
