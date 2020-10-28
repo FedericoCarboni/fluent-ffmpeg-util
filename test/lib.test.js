@@ -1,4 +1,5 @@
 'use strict';
+/* global it */
 
 var lib = require('../lib/lib');
 
