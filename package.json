@@ -35,6 +35,8 @@
   "devDependencies": {
     "@rollup/plugin-inject": "^4.0.2",
     "chai": "^4.2.0",
+    "eslint": "^7.12.1",
+    "eslint-plugin-es": "^3.0.1",
     "fluent-ffmpeg": "^2.1.2",
     "mocha": "^8.2.0",
     "rollup": "^2.32.1"
