@@ -1,0 +1,42 @@
+{
+  "name": "fluent-ffmpeg-util",
+  "version": "0.1.0-alpha.0",
+  "description": "",
+  "main": "dist/lib.cjs",
+  "exports": {
+    "node": {
+      "import": "./dist/lib.mjs",
+      "require": "./dist/lib.cjs"
+    }
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FedericoCarboni/fluent-ffmpeg-util.git"
+  },
+  "author": {
+    "name": "Federico Carboni",
+    "email": "fr3ddydev@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FedericoCarboni/fluent-ffmpeg-util/issues"
+  },
+  "homepage": "https://github.com/FedericoCarboni/fluent-ffmpeg-util#readme",
+  "dependencies": {
+    "uuid": "^8.3.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-inject": "^4.0.2",
+    "chai": "^4.2.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "mocha": "^8.2.0",
+    "rollup": "^2.32.1"
+  },
+  "optionalDependencies": {
+    "ntsuspend": "*"
+  }
+}
