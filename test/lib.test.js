@@ -9,6 +9,35 @@ var net = require('net');
 var fs = require('fs');
 var chai = require('chai');
 
+describe('pause() & resume()', function () {
+    it('should return true on a running ffmpeg command', function (done) {
+        var command = ffmpeg()
+            .addOption('-y')
+            .input('test/samples/video.mkv')
+            .output('pipe:1')
+            .outputFormat('null')
+            .on('error', function (err) {
+                done(err);
+            })
+            .on('end', function() {
+                done();
+            })
+            .on('start', function () {
+                chai.expect(lib.pause(command)).to.equal(true);
+                chai.expect(lib.resume(command)).to.equal(true);
+            });
+            command.run();
+    });
+    it('should return false on an idle ffmpeg command', function () {
+        var command = ffmpeg()
+            .addOption('-y')
+            .input('test/samples/video.mkv')
+            .output('pipe:1')
+            .outputFormat('null');
+        chai.expect(lib.pause(command)).to.equal(false);
+        chai.expect(lib.resume(command)).to.equal(false);
+    });
+})
 describe('handleOutputStream()', function () {
     it('should create a socket server', function (done) {
         var stream_1 = new stream.PassThrough();
@@ -76,7 +105,9 @@ describe('handleInputStream()', function () {
             .run();
     });
 });
-it('tee()', function () {
-    chai.expect(lib.tee('[strange] output.mkv ', 'output1.mkv'))
-        .matches(/tee:\\\[strange\\]\\ output\.mkv\\ \|output1\.mkv/);
+describe('tee()', function () {
+    it('should return a correct ffmpeg uri', function () {
+        chai.expect(lib.tee('[strange] output.mkv ', 'output1.mkv'))
+            .matches(/tee:\\\[strange\\]\\ output\.mkv\\ \|output1\.mkv/);
+    });
 });
