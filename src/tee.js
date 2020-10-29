@@ -8,7 +8,7 @@ export function tee() {
     if (n === 0)
         return NULL;
     if (n === 1)
-        return typeof (dest = arguments[i]) === 'string' ? dest : handleOutputStream(dest).path;
+        return typeof (dest = arguments[0]) === 'string' ? dest : handleOutputStream(dest).path;
     for (var i = 0, destinations = Array(n); i < n; i++)
         destinations[i] = typeof (dest = arguments[i]) === 'string' ?
             escapeTeeComponent(dest) :
