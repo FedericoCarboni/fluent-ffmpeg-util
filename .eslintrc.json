@@ -14,7 +14,8 @@
   },
   "rules": {
     "es/no-typed-arrays": "off",
-    "es/no-modules": "off"
+    "es/no-modules": "off",
+    "semi": "error"
   },
   "ignorePatterns": ["rollup.config.js"]
 }
