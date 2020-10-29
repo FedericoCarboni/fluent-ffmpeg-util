@@ -1,12 +1,17 @@
 import { handleOutputStream } from './streams';
-import { escapeTeeComponent } from './util';
+import { escapeTeeComponent, isWin32 } from './util';
+
+export var NULL = isWin32 ? 'NUL' : '/dev/null';
 
 export function tee() {
-    for (var s = arguments.length, i = 0, destinations = Array(s); i < s; i++) {
-        var dest = arguments[i];
-        destinations[i] = typeof dest === 'string' ?
+    var n = arguments.length, dest;
+    if (n === 0)
+        return NULL;
+    if (n === 1)
+        return typeof (dest = arguments[i]) === 'string' ? dest : handleOutputStream(dest).path;
+    for (var i = 0, destinations = Array(n); i < n; i++)
+        destinations[i] = typeof (dest = arguments[i]) === 'string' ?
             escapeTeeComponent(dest) :
             handleOutputStream(dest).path;
-    }
     return 'tee:' + destinations.join('|');
 }
