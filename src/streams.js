@@ -9,15 +9,9 @@ var unixsock = isWin32 ? function () {
     return '/tmp/fluent-ffmpeg-' + v4() + '.sock';
 };
 
-var sockpath = isWin32 ? function (sock) {
-    return 'file:' + sock;
-} : function (sock) {
-    return 'unix:' + sock;
-};
-
 function handleStream(stream, writable) {
     var sock = unixsock();
-    var path = sockpath(sock);
+    var path = STREAM_PROTOCOL + ':' + sock;
     var server = createServer(function (socket) {
         var onError = function () {
             if (socket.writable)
@@ -49,6 +43,8 @@ function handleStream(stream, writable) {
         }
     };
 }
+
+export var STREAM_PROTOCOL = isWin32 ? 'file' : 'unix';
 
 export function handleOutputStream(stream) {
     return handleStream(stream, true);

@@ -12,3 +12,4 @@ export declare function pause(command: FfmpegCommand): boolean;
 export declare function resume(command: FfmpegCommand): boolean;
 export declare function abort(command: FfmpegCommand): void;
 export declare function tee(...destinations: (string | NodeJS.WritableStream)[]): string;
+export declare const STREAM_PROTOCOL: 'unix' | 'file';
