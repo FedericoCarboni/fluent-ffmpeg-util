@@ -32,12 +32,12 @@ describe('pause() & resume()', function () {
         var command = ffmpeg()
             .addOption('-y')
             .input('test/samples/video.mkv')
-            .output('pipe:1')
+            .output(lib.NULL)
             .outputFormat('null');
         chai.expect(lib.pause(command)).to.equal(false);
         chai.expect(lib.resume(command)).to.equal(false);
     });
-})
+});
 describe('handleOutputStream()', function () {
     it('should create a socket server', function (done) {
         var stream_1 = new stream.PassThrough();
