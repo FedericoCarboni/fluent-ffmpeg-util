@@ -1,6 +1,6 @@
 {
   "name": "fluent-ffmpeg-util",
-  "version": "0.2.0-alpha.0",
+  "version": "0.2.0-alpha.1",
   "description": "Extra fluent-ffmpeg features",
   "main": "lib/lib.cjs",
   "types": "lib/lib.d.ts",
